@@ -9,7 +9,7 @@ class Board
 		@a_two = BoardCase.new("A2") 
 		@a_three = BoardCase.new("A3") 
 		@b_one = BoardCase.new("B1") 
-		@b_two = BoardCase.new("B3") 
+		@b_two = BoardCase.new("B2") 
 		@b_three = BoardCase.new("B3") 
 		@c_one = BoardCase.new("C1")
 		@c_two = BoardCase.new("C2")
@@ -27,7 +27,7 @@ class Board
 
 	def play_turn(case_to_fill,current_player)
 		
-		while case_to_fill != ( @a_one.position || @a_two.position || @a_three.position || @b_one.position || @b_two.position || @b_three.position || @c_one.position || @c_two.position || @c_three.position)
+		while (case_to_fill != @a_one.position && case_to_fill != @a_two.position && case_to_fill != @a_three.position && case_to_fill != @b_one.position && case_to_fill != @b_two.position && case_to_fill != @b_three.position && case_to_fill != @c_one.position && case_to_fill != @c_two.position && case_to_fill != @c_three.position)
             puts "Entre un numéro de case valide" 
             print "> "
             case_to_fill = gets.chomp
@@ -36,40 +36,43 @@ class Board
 		case_filled = 0 
         while case_filled < 1
             if case_to_fill == @a_one.position && @a_one.state == " "
-                @a_one.state = value
+                @a_one.state = current_player.value
                 case_filled += 1 
             elsif case_to_fill == @a_two.position && @a_two.state == " "
-                @a_two.state = value
+                @a_two.state = current_player.value
                 case_filled += 1
             elsif case_to_fill == @a_three.position && @a_three.state == " "
-                @a_three.state = value
+                @a_three.state = current_player.value
                 case_filled += 1
             elsif case_to_fill == @b_one.position && @b_one.state == " "
-                @b_one.state = value
+                @b_one.state = current_player.value
                 case_filled += 1            
             elsif case_to_fill == @b_two.position && @b_two.state == " "
-                @b_two.state = value
+                @b_two.state = current_player.value
                 case_filled += 1
             elsif case_to_fill == @b_three.position && @b_three.state == " "
-                @b_three.state = value
+                @b_three.state = current_player.value
                  case_filled += 1
             elsif case_to_fill == @c_one.position && @c_one.state == " "
-                @c_one.state = value
+                @c_one.state = current_player.value
                 case_filled += 1
             elsif case_to_fill == @c_two.position && @c_two.state == " "
-                @c_two.state = value
+                @c_two.state = current_player.value
                 case_filled += 1
             elsif case_to_fill == @c_three.position && @c_three.state == " "
-                @c_three.state = value
+                @c_three.state = current_player.value
                 case_filled += 1
             else 
                 puts "Impossible : cette case est déjà occupée, entre un autre numéro :"
                 print "> "
                 case_to_fill = gets.chomp
             end
-        end
-		#2) change la ase jouée en fonction de la valeur du joueur (X ou O)
-	  end
+		end
+		
+
+	  
+
+	end
 	
 	def victory?
 		#TO DO : une méthode qui vérifie le plateau et indique s'il y a un vainqueur ou match nul
