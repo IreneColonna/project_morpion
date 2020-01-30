@@ -42,4 +42,3 @@ class Board
 
 end
 
-binding.pry
