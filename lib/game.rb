@@ -52,27 +52,11 @@ class Game
 
    
         #remplir la case avec le symbole du joueur
-        @board.play_turn(case_to_fill, @current_player.value)
+        @board.play_turn(case_to_fill, @current_player)
 
         #vérifier si un joueur a gagné
-        if @board.a_one.state == @board.b_one.state && @board.a_one.state == @board.c_one.state
-            @status = "la partie est terminée, #{@current_player.name} a gagné"
-        elsif @board.a_one.state == @board.a_two.state && @board.a_one.state == @board.a_three.state
-            @status = "la partie est terminée, #{@current_player.name} a gagné"
-        elsif @board.a_one.state == @board.b_two.state && @board.a_one.state == @board.c_three.state
-            @status = "la partie est terminée, #{@current_player.name} a gagné"
-        elsif @board.b_one.state == @board.b_two.state && @board.b_one.state == @board.b_three.state
-            @status = "la partie est terminée, #{@current_player.name} a gagné"
-        elsif @board.c_one.state == @board.c_two.state && @board.c_one.state == @board.c_three.state
-            @status = "la partie est terminée, #{@current_player.name} a gagné"
-        elsif @board.a_three.state == @board.b_three.state && @board.a_three.state == @board.c_three.state
-            @status = "la partie est terminée, #{@current_player.name} a gagné"
-        elsif @board.a_two.state == @board.b_two.state && @board.a_two.state == @board.c_two.state
-            @status = "la partie est terminée, #{@current_player.name} a gagné"
-        elsif @board.c_one.state == @board.b_two.state && @board.c_one.state == @board.a_three.state
-            @status = "la partie est terminée, #{@current_player.name} a gagné" 
-        end
-                    
+         
+
         #passer au joueur suivant si la partie n'est pas finie
         if @current_player == @players[0]
             @current_player = @players[1]
@@ -99,7 +83,6 @@ class Game
         Game.turn
     end
 
-
     def game_end
     #vérifie si la partie est terminée et propose de rejouer sans changer les noms des joueurs    
         if @status == "la partie est terminée, match nul" || @status == "la partie est terminée, #{@current_player.name} a gagné"
@@ -117,4 +100,5 @@ class Game
     end  
 
 end
+
 
