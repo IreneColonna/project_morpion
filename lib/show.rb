@@ -1,4 +1,4 @@
-class Board
+class Show
 
     def show_board(board)
 
